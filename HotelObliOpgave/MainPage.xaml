@@ -8,7 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="75" Margin="638,411,0,0" VerticalAlignment="Top" Width="147"/>
+        <Button x:Name="Get" Content="Button" HorizontalAlignment="Left" Height="41" Margin="687,73,0,0" VerticalAlignment="Top" Width="113"/>
+        <TextBlock x:Name="Information" HorizontalAlignment="Left" Height="142" Margin="111,163,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="404"/>
+        <TextBox x:Name="ID" HorizontalAlignment="Left" Height="41" Margin="111,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="41" Margin="416,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="99"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="41" Margin="260,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="99"/>
+        <Button x:Name="Delete" Content="Button" HorizontalAlignment="Left" Height="48" Margin="111,310,0,0" VerticalAlignment="Top" Width="99"/>
 
     </Grid>
 </Page>

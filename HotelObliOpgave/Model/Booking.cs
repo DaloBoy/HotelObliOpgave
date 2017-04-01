@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelObliOpgave.Model
 {
-    class Booking
+    public class Booking
     {
         public int Booking_id { get; set; }
         public int Hotel_No { get; set; }
