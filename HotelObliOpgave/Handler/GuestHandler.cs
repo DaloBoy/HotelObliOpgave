@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelObliOpgave.Model;
 using HotelObliOpgave.ViewModel;
 
 namespace HotelObliOpgave.Handler
 {
-    class HandlerGuest
+    class GuestHandler
     {
         public GuestViewModel GuestViewModel { get; set; }
 
-        public void GuestHandler(GuestViewModel gvm)
+        public GuestHandler(GuestViewModel gvm)
         {
             this.GuestViewModel = gvm;
         }
@@ -19,7 +20,7 @@ namespace HotelObliOpgave.Handler
         public void CreateGuest()
         {
             Guest tempGuest = new Guest(GuestViewModel.Guest_No, GuestViewModel.Name, GuestViewModel.Address);
-
+            GuestCatalogSingleton.Instance.AddGuest(tempGuest);
         }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HotelObliOpgave.Common;
+using HotelObliOpgave.Handler;
+
 
 namespace HotelObliOpgave.ViewModel
 {
@@ -41,8 +44,11 @@ namespace HotelObliOpgave.ViewModel
 
         public GuestViewModel()
         {
-            
+            //CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
+            //DeleteGuestCommand = new RelayCommand(DeleteGuest, CanDeleteGuest);
+            //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
         }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

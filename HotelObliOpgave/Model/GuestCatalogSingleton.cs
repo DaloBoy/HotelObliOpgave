@@ -10,9 +10,6 @@ namespace HotelObliOpgave.Model
     class GuestCatalogSingleton
     {
         private ObservableCollection<Guest> guests;
-
-
-
         public ObservableCollection<Guest> Guests
         {
             get { return guests; }
@@ -20,8 +17,6 @@ namespace HotelObliOpgave.Model
         }
 
         private static GuestCatalogSingleton instance;
-
-
         public static GuestCatalogSingleton Instance
         {
             get
@@ -39,19 +34,19 @@ namespace HotelObliOpgave.Model
 
         }
 
-        public void AddGuest(Guest g)
+        public void AddGuest(Guest GuestAdd)
         {
-
+            Guests.Add(GuestAdd);
         }
 
-        public void RemoveGuest(Guest g)
+        public void RemoveGuest(Guest GuestRemove)
         {
-
+            Guests.Remove(GuestRemove);
         }
 
         public void UpdateGuest(Guest g)
         {
 
-        }
+        }   
     }
 }
