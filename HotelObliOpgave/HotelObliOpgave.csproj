@@ -96,7 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Handler\HandlerGuest.cs" />
+    <Compile Include="Handler\GuestHandler.cs" />
     <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\Guest.cs" />
     <Compile Include="MainPage.xaml.cs">

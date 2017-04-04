@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelObliOpgave
 {
-    public class Guest
+    class Guest
     {
         public int Guest_No { get; set; }
 
