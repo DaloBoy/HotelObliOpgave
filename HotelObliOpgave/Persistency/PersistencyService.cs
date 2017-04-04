@@ -8,6 +8,5 @@ namespace HotelObliOpgave.Persistency
 {
     class PersistencyService
     {
-
     }
 }
