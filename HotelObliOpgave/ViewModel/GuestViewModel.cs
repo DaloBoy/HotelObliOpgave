@@ -8,13 +8,18 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HotelObliOpgave.Common;
 using HotelObliOpgave.Handler;
+using HotelObliOpgave.Model;
 
 
 namespace HotelObliOpgave.ViewModel
 {
     class GuestViewModel : INotifyPropertyChanged
     {
+
+        public GuestCatalogSingleton GuestCatalogSingleton { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         public ICommand CreateGuestCommand { get; set; }
         public ICommand DeleteGuestCommand { get; set; }
         public ICommand UpdateGuestCommand { get; set; }
@@ -40,6 +45,14 @@ namespace HotelObliOpgave.ViewModel
         {
             get { return address; }
             set { address = value; }
+        }
+
+        private Guest selectedguest;
+
+        public Guest SelectedGuest
+        {
+            get { return selectedguest; }
+            set { selectedguest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
         public GuestViewModel()
