@@ -14,7 +14,7 @@ namespace HotelObliOpgave.Handler
 
         public GuestHandler(GuestViewModel gvm)
         {
-            this.GuestViewModel = gvm;
+            GuestViewModel = gvm;
         }
 
         public void CreateGuest()

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelObliOpgave
 {
-    class Guest
+    public class Guest
     {
         public int Guest_No { get; set; }
 
@@ -14,12 +17,12 @@ namespace HotelObliOpgave
 
         public string Address { get; set; }
 
-        public Guest(int Guest_No, string Name, string Address)
+        /*public Guest(int Guest_No, string Name, string Address)
         {
             this.Guest_No = Guest_No;
             this.Name = Name;
             this.Address = Address;
-        }
+        }*/
 
     }
 }

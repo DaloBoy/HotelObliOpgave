@@ -44,7 +44,7 @@ namespace HotelObliOpgave.ViewModel
 
         public GuestViewModel()
         {
-            //CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
+            CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
             //DeleteGuestCommand = new RelayCommand(DeleteGuest, CanDeleteGuest);
             //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
         }
