@@ -22,5 +22,10 @@ namespace HotelObliOpgave.Handler
             Guest tempGuest = new Guest(GuestViewModel.Guest_No, GuestViewModel.Name, GuestViewModel.Address);
             GuestCatalogSingleton.Instance.AddGuest(tempGuest);
         }
+
+        public void DeleteGuest()
+        {
+            GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+        }
     }
 }
