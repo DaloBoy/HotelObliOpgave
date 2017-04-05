@@ -17,6 +17,7 @@ namespace HotelObliOpgave.Model
         }
 
         private static GuestCatalogSingleton instance;
+
         public static GuestCatalogSingleton Instance
         {
             get

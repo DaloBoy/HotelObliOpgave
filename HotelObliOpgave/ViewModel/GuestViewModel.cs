@@ -62,13 +62,16 @@ namespace HotelObliOpgave.ViewModel
         {
             GuestHandler = new HotelObliOpgave.Handler.GuestHandler(this);
             CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
-            //DeleteGuestCommand = new RelayCommand(DeleteGuest, CanDeleteGuest);
+            DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
             //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
