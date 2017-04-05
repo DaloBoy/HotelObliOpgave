@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -55,9 +56,12 @@ namespace HotelObliOpgave.ViewModel
             set { selectedguest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
+
+        public Handler.GuestHandler GuestHandler { get; set; }
         public GuestViewModel()
         {
-            //CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
+            GuestHandler = new HotelObliOpgave.Handler.GuestHandler(this);
+            CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
             //DeleteGuestCommand = new RelayCommand(DeleteGuest, CanDeleteGuest);
             //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
         }
