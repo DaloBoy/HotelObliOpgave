@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelObliOpgave.Persistency;
 
 namespace HotelObliOpgave.Model
 {
@@ -38,6 +39,7 @@ namespace HotelObliOpgave.Model
         public void AddGuest(Guest GuestAdd)
         {
             Guests.Add(GuestAdd);
+            PersistencyService.PostGuestAsync(GuestAdd);
         }
 
         public void RemoveGuest(Guest GuestRemove)
@@ -48,6 +50,14 @@ namespace HotelObliOpgave.Model
         public void UpdateGuest(Guest g)
         {
 
-        }   
+        }
+
+        public async Task GetGuestsAsync()
+        {
+            foreach (var item in await PersistencyService.GetGuestAsync())
+            {
+                this.Guests.Add(item);
+            }
+        }
     }
 }

@@ -14,42 +14,67 @@ namespace HotelObliOpgave.Persistency
     class PersistencyService
     {
         //Mangler ServerURL
-        const string serverURL = "";
+        const string serverURL = "http://localhost:18543/";
 
         // Post 
-        public static void PostGuest(Guest PostGuest)
+        public static void PostGuestAsync(Guest PostGuest)
         {
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverURL);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                string urlStringCreate = "api/guests";
 
                 try
                 {
-                    var response = client.PostAsJsonAsync<Guest>("api/guests", PostGuest).Result;
+                    var createResponse = client.PostAsJsonAsync<Guest>(urlStringCreate, PostGuest).Result;
 
-                    if (response.IsSuccessStatusCode)
+                    if (createResponse.IsSuccessStatusCode)
                     {
-                        MessageDialog guestAdded = new MessageDialog("Guest has been added");
-                        guestAdded.Commands.Add(new UICommand { Label = "Ok" });
-                        guestAdded.ShowAsync().AsTask();
+                        MessageDialog guestCreated = new MessageDialog("Guest is Created");
                     }
                     else
                     {
-                        MessageDialog Error = new MessageDialog("Error");
-                        Error.Commands.Add(new UICommand { Label = "Ok" });
-                        Error.ShowAsync().AsTask();
+                        MessageDialog guestNotCreated = new MessageDialog("Create guest failed");
                     }
                 }
                 catch (Exception e)
                 {
-                    MessageDialog Error = new MessageDialog("Error : " + e);
-                    Error.Commands.Add(new UICommand { Label = "Ok" });
-                    Error.ShowAsync().AsTask();
+                    MessageDialog guestNotCreated = new MessageDialog("Create guest falied" + e);
                 }
-
             }
+            /* using (var client = new HttpClient())
+             {
+                 client.BaseAddress = new Uri(serverURL);
+                 client.DefaultRequestHeaders.Clear();
+                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                 try
+                 {
+                     var response = client.PostAsJsonAsync<Guest>("api/guests", PostGuest).Result;
+
+                     if (response.IsSuccessStatusCode)
+                     {
+                         MessageDialog guestAdded = new MessageDialog("Guest has been added");
+                         guestAdded.Commands.Add(new UICommand { Label = "Ok" });
+                         guestAdded.ShowAsync().AsTask();
+                     }
+                     else
+                     {
+                         MessageDialog Error = new MessageDialog("Error");
+                         Error.Commands.Add(new UICommand { Label = "Ok" });
+                         Error.ShowAsync().AsTask();
+                     }
+                 }
+                 catch (Exception e)
+                 {
+                     MessageDialog Error = new MessageDialog("Error : " + e);
+                     Error.Commands.Add(new UICommand { Label = "Ok" });
+                     Error.ShowAsync().AsTask();
+                 }
+
+             }*/
 
         }
 
@@ -115,20 +140,31 @@ namespace HotelObliOpgave.Persistency
         }
 
 
-        public static ObservableCollection<Guest> GetGuest()
+        public static async Task<ObservableCollection<Guest>> GetGuestAsync()
         {
+            ObservableCollection<Guest> TempGuestCollection = new ObservableCollection<Guest>();
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverURL);
-                var response = client.GetAsync("api/Guests").Result;
-
-                if (response.IsSuccessStatusCode)
+                client.DefaultRequestHeaders.Clear();
+                string urlstring = "api/guests";
+                try
                 {
-                    var guestListe = response.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
-                    return guestListe;
-                }
+                    HttpResponseMessage response = await client.GetAsync(urlstring);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempGuestCollection = response.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
 
-                return null;
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageDialog exception = new MessageDialog(e.Message);
+                    return TempGuestCollection = null;
+                }
+                return TempGuestCollection;
+
             }
         }
     }

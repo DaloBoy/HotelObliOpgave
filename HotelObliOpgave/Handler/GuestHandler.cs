@@ -20,17 +20,25 @@ namespace HotelObliOpgave.Handler
         public void CreateGuest()
         {
             Guest tempGuest = new Guest(GuestViewModel.Guest_No, GuestViewModel.Name, GuestViewModel.Address);
+            tempGuest.Name = GuestViewModel.Name;
+            tempGuest.Address = GuestViewModel.Address;
+            tempGuest.Guest_No = GuestViewModel.Guest_No;
             GuestCatalogSingleton.Instance.AddGuest(tempGuest);
         }
 
         public void DeleteGuest()
         {
-            GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+            //GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
         }
 
         public void UpdateGuest()
         {
-            GuestViewModel.GuestCatalogSingleton.UpdateGuest(GuestViewModel.SelectedGuest);
+            //GuestViewModel.GuestCatalogSingleton.UpdateGuest(GuestViewModel.SelectedGuest);
+        }
+
+        public async void GetGuest()
+        {
+            await GuestCatalogSingleton.Instance.GetGuestsAsync();
         }
     }
 }

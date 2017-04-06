@@ -21,16 +21,30 @@ namespace HotelObliOpgave.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private ObservableCollection<Guest> guestCollection;
+
+        public ObservableCollection<Guest> GuestCollection
+        {
+            get { return guestCollection; }
+            set { guestCollection = value; }
+        }
+
         //Icommand Prop
         public ICommand CreateGuestCommand { get; set; }
         public ICommand DeleteGuestCommand { get; set; }
         public ICommand UpdateGuestCommand { get; set; }
+        public ICommand GetGuestCommand { get; set; }
 
         //Props
+        private int guest_no;
         public int Guest_No
         {
-            get { return Guest_No; }
-            set { Guest_No = value; }
+            get { return guest_no; }
+            set
+            {
+                guest_no = value;
+                OnPropertyChanged(nameof(Guest_No));
+            }
         }
 
         private string name;
@@ -38,7 +52,11 @@ namespace HotelObliOpgave.ViewModel
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
         private string address;
@@ -46,7 +64,11 @@ namespace HotelObliOpgave.ViewModel
         public string Address
         {
             get { return address; }
-            set { address = value; }
+            set
+            {
+                address = value;
+                OnPropertyChanged(nameof(Address));
+            }
         }
 
         private Guest selectedguest;
@@ -63,10 +85,14 @@ namespace HotelObliOpgave.ViewModel
         //ViewModel
         public GuestViewModel()
         {
+            GuestCollection = GuestCatalogSingleton.Instance.Guests;
+            GuestCatalogSingleton = GuestCatalogSingleton.Instance;
             GuestHandler = new HotelObliOpgave.Handler.GuestHandler(this);
+
             CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
             DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
             //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
+            GetGuestCommand = new RelayCommand(GuestHandler.GetGuest, null);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

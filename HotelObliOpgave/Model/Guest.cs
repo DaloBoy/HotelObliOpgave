@@ -17,12 +17,17 @@ namespace HotelObliOpgave
 
         public string Address { get; set; }
 
-        /*public Guest(int Guest_No, string Name, string Address)
+        public Guest(int Guest_No, string Name, string Address)
         {
             this.Guest_No = Guest_No;
             this.Name = Name;
             this.Address = Address;
-        }*/
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} . {Address} . {Guest_No}";
+        }
 
     }
 }
