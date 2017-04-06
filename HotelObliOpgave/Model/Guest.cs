@@ -26,7 +26,7 @@ namespace HotelObliOpgave
 
         public override string ToString()
         {
-            return $"{Name} . {Address} . {Guest_No}";
+            return $"{Name} _ {Address} _ {Guest_No}";
         }
 
     }
