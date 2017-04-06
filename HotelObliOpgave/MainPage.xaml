@@ -12,13 +12,13 @@
         <Grid.DataContext>
             <ViewModel:GuestViewModel/>
         </Grid.DataContext>
-        <Button x:Name="Get" Content="Delete" HorizontalAlignment="Left" Height="41" Margin="561,119,0,0" VerticalAlignment="Top" Width="88" Command="{Binding DeleteGuestCommand}"/>
+        <Button x:Name="Get" Content="Delete" HorizontalAlignment="Left" Height="41" Margin="561,119,0,0" VerticalAlignment="Top" Width="88" Command="{Binding DeleteGuestCommand, Mode=TwoWay}"/>
         <TextBox x:Name="ID" HorizontalAlignment="Left" Height="41" Margin="111,240,0,0" TextWrapping="Wrap" Text="{Binding Guest_No, Mode=TwoWay}" VerticalAlignment="Top" Width="99" PlaceholderText="Guest ID"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="41" Margin="416,240,0,0" TextWrapping="Wrap" Text="{Binding Address, Mode=TwoWay}" VerticalAlignment="Top" Width="99" PlaceholderText="Address"/>
         <TextBox x:Name="Name" HorizontalAlignment="Left" Height="41" Margin="264,240,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="99" PlaceholderText="Navn"/>
         <Button x:Name="Delete" Content="Create" HorizontalAlignment="Left" Height="41" Margin="561,73,0,0" VerticalAlignment="Top" Width="88" Command="{Binding CreateGuestCommand}"/>
         <Button x:Name="button" Content="Opdater" HorizontalAlignment="Left" Height="41" Margin="561,165,0,0" VerticalAlignment="Top" Width="88" Command="{Binding UpdateGuestCommand}"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="133" Margin="111,73,0,0" VerticalAlignment="Top" Width="404" Grid.Row="4" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding GuestCatalogSingleton.Guests}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="133" Margin="111,73,0,0" VerticalAlignment="Top" Width="404" Grid.Row="4" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding GuestCatalogSingleton.Guests}" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}"/>
         <Button x:Name="button1" Content="Hent" HorizontalAlignment="Left" Margin="561,213,0,0" VerticalAlignment="Top" Height="41" Width="88" Command="{Binding GetGuestCommand}"/>
 
     </Grid>

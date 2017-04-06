@@ -51,27 +51,19 @@ namespace HotelObliOpgave.Persistency
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                
                 client.BaseAddress = new Uri(serverURL);
                 client.DefaultRequestHeaders.Clear();
-                string urlString = "api/guests" + DeleteGuest.Guest_No.ToString(); ;
+                string urlString = "api/guests/" + DeleteGuest.Guest_No.ToString();
 
                 try
                 {
-                    var createResponse = client.PostAsJsonAsync<Guest>(urlString, DeleteGuest).Result;
-
-                    if (createResponse.IsSuccessStatusCode)
-                    {
-                        MessageDialog guestCreated = new MessageDialog("Guest is Delete");
-                    }
-                    else
-                    {
-                        MessageDialog guestNotCreated = new MessageDialog("Delete guest failed");
-                    }
+                    var Response = client.DeleteAsync(urlString).Result;
+                    
                 }
                 catch (Exception e)
                 {
-                    MessageDialog guestNotCreated = new MessageDialog("Delete guest falied" + e);
+                    MessageDialog guestNotCreated = new MessageDialog("Delete guest failed" + e);
                 }
             }
         }

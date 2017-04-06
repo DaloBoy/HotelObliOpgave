@@ -100,5 +100,15 @@ namespace HotelObliOpgave.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public bool CanDeleteGuest()
+        {
+            if (GuestCollection.Count > 0)
+                return true;
+            else
+            {
+                return false;
+            }
+        }
     }
 }
