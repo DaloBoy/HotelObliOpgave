@@ -43,103 +43,40 @@ namespace HotelObliOpgave.Persistency
                 {
                     MessageDialog guestNotCreated = new MessageDialog("Create guest falied" + e);
                 }
-            }
-            /* using (var client = new HttpClient())
-             {
-                 client.BaseAddress = new Uri(serverURL);
-                 client.DefaultRequestHeaders.Clear();
-                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                 try
-                 {
-                     var response = client.PostAsJsonAsync<Guest>("api/guests", PostGuest).Result;
-
-                     if (response.IsSuccessStatusCode)
-                     {
-                         MessageDialog guestAdded = new MessageDialog("Guest has been added");
-                         guestAdded.Commands.Add(new UICommand { Label = "Ok" });
-                         guestAdded.ShowAsync().AsTask();
-                     }
-                     else
-                     {
-                         MessageDialog Error = new MessageDialog("Error");
-                         Error.Commands.Add(new UICommand { Label = "Ok" });
-                         Error.ShowAsync().AsTask();
-                     }
-                 }
-                 catch (Exception e)
-                 {
-                     MessageDialog Error = new MessageDialog("Error : " + e);
-                     Error.Commands.Add(new UICommand { Label = "Ok" });
-                     Error.ShowAsync().AsTask();
-                 }
-
-             }*/
-
+            }           
         }
-
+       
         // Delete
-        public static void DeleteGuest(Guest GuestToDelete)
+        public static void DeleteGuestAsync(Guest DeleteGuest)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(serverURL);
-                string urlString = "api/guests/" + GuestToDelete.Guest_No.ToString();
-
-                try
-                {
-                    var response = client.DeleteAsync(urlString).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageDialog msg = new MessageDialog("Guest has been Deleted");
-                        msg.Commands.Add(new UICommand { Label = "Ok" });
-                        msg.ShowAsync().AsTask();
-
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageDialog Error = new MessageDialog("Error : " + e);
-                    Error.Commands.Add(new UICommand { Label = "Ok" });
-                    Error.ShowAsync().AsTask();
-                }
-            }
-        }
-
-        // Put
-        public static void PutGuest(Guest GuestToPut)
-        {
-            using (var client = new HttpClient())
-            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverURL);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                string urlString = "api/guests/" + GuestToPut.Guest_No.ToString();
+                string urlString = "api/guests" + DeleteGuest.Guest_No.ToString(); ;
 
                 try
                 {
-                    var response = client.PutAsJsonAsync<Guest>(urlString, GuestToPut).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageDialog msg = new MessageDialog("Guest has been edited");
-                        msg.Commands.Add(new UICommand { Label = "Ok" });
-                        msg.ShowAsync().AsTask();
+                    var createResponse = client.PostAsJsonAsync<Guest>(urlString, DeleteGuest).Result;
 
+                    if (createResponse.IsSuccessStatusCode)
+                    {
+                        MessageDialog guestCreated = new MessageDialog("Guest is Delete");
+                    }
+                    else
+                    {
+                        MessageDialog guestNotCreated = new MessageDialog("Delete guest failed");
                     }
                 }
                 catch (Exception e)
                 {
-                    MessageDialog Error = new MessageDialog("Error : " + e);
-                    Error.Commands.Add(new UICommand { Label = "Ok" });
-                    Error.ShowAsync().AsTask();
+                    MessageDialog guestNotCreated = new MessageDialog("Delete guest falied" + e);
                 }
             }
-
         }
 
-
+        // Put        
         public static async Task<ObservableCollection<Guest>> GetGuestAsync()
         {
             ObservableCollection<Guest> TempGuestCollection = new ObservableCollection<Guest>();

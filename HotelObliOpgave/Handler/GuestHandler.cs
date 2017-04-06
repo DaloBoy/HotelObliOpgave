@@ -28,7 +28,7 @@ namespace HotelObliOpgave.Handler
 
         public void DeleteGuest()
         {
-            //GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+            GuestCatalogSingleton.Instance.RemoveGuest(GuestViewModel.SelectedGuest);
         }
 
         public void UpdateGuest()
