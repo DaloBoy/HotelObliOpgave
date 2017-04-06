@@ -31,6 +31,6 @@ namespace HotelObliOpgave.Handler
         public void UpdateGuest()
         {
             GuestViewModel.GuestCatalogSingleton.UpdateGuest(GuestViewModel.SelectedGuest);
-        }
+        }   
     }
 }

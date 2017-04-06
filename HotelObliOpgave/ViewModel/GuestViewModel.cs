@@ -34,7 +34,6 @@ namespace HotelObliOpgave.ViewModel
         }
 
         private string name;
-
         public string Name
         {
             get { return name; }
@@ -42,7 +41,6 @@ namespace HotelObliOpgave.ViewModel
         }
 
         private string address;
-
         public string Address
         {
             get { return address; }
