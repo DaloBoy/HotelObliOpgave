@@ -21,11 +21,12 @@ namespace HotelObliOpgave.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        //Icommand Prop
         public ICommand CreateGuestCommand { get; set; }
         public ICommand DeleteGuestCommand { get; set; }
         public ICommand UpdateGuestCommand { get; set; }
 
-
+        //Props
         public int Guest_No
         {
             get { return Guest_No; }
@@ -56,8 +57,10 @@ namespace HotelObliOpgave.ViewModel
             set { selectedguest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
-
+        //Handler
         public Handler.GuestHandler GuestHandler { get; set; }
+
+        //ViewModel
         public GuestViewModel()
         {
             GuestHandler = new HotelObliOpgave.Handler.GuestHandler(this);
