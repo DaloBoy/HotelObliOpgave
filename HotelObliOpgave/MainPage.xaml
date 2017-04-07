@@ -13,7 +13,7 @@
             <ViewModel:GuestViewModel/>
         </Grid.DataContext>
         <Button x:Name="Get" Content="Delete" HorizontalAlignment="Left" Height="65" Margin="831,232,0,0" VerticalAlignment="Top" Width="140" Command="{Binding DeleteGuestCommand, Mode=TwoWay}"/>
-        <TextBox x:Name="ID" HorizontalAlignment="Left" Height="66" Margin="111,507,0,0" TextWrapping="Wrap" Text="{Binding Guest_No, Mode=TwoWay}" VerticalAlignment="Top" Width="158" PlaceholderText="Guest ID"/>
+        <TextBox x:Name="ID" HorizontalAlignment="Left" Height="66" Margin="111,507,0,0" TextWrapping="Wrap" Text="{Binding Guest_No, Mode=TwoWay}" VerticalAlignment="Top" Width="158"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="66" Margin="599,507,0,0" TextWrapping="Wrap" Text="{Binding Address, Mode=TwoWay}" VerticalAlignment="Top" Width="158" PlaceholderText="Address"/>
         <TextBox x:Name="Name" HorizontalAlignment="Left" Height="66" Margin="356,507,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="158" PlaceholderText="Navn"/>
         <Button x:Name="Delete" Content="Create" HorizontalAlignment="Left" Height="66" Margin="831,507,0,0" VerticalAlignment="Top" Width="140" Command="{Binding CreateGuestCommand}"/>

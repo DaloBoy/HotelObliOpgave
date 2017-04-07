@@ -13,7 +13,7 @@ namespace HotelObliOpgave.Persistency
 {
     class PersistencyService
     {
-        //Mangler ServerURL
+        
         const string serverURL = "http://localhost:18543/";
 
         // Post 
@@ -95,7 +95,7 @@ namespace HotelObliOpgave.Persistency
                 return TempGuestCollection;
             }
         }
-        //Put
+        //Put - Virker Ikke
         public static void UpdateGuestListJsonAsync(Guest guest)
         {
             using (var client = new HttpClient())
