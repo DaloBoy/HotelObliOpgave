@@ -48,9 +48,10 @@ namespace HotelObliOpgave.Model
             PersistencyService.DeleteGuestAsync(GuestRemove);
         }
 
-        public void UpdateGuest(Guest g)
+        public void UpdateGuest(Guest GuestUpdate)
         {
-
+            Guests.Clear();
+            PersistencyService.UpdateGuestListJsonAsync(GuestUpdate);
         }
 
         public async Task GetGuestsAsync()

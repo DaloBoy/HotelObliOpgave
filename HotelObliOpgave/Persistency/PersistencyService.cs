@@ -68,7 +68,7 @@ namespace HotelObliOpgave.Persistency
             }
         }
 
-        // Put        
+        //Get        
         public static async Task<ObservableCollection<Guest>> GetGuestAsync()
         {
             ObservableCollection<Guest> TempGuestCollection = new ObservableCollection<Guest>();
@@ -93,7 +93,23 @@ namespace HotelObliOpgave.Persistency
                     return TempGuestCollection = null;
                 }
                 return TempGuestCollection;
-
+            }
+        }
+        //Put
+        public static void UpdateGuestListJsonAsync(Guest guest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverURL);
+                client.DefaultRequestHeaders.Clear();
+                try
+                {
+                    var response = client.PutAsJsonAsync<Guest>("api/guests/" + guest.Guest_No, guest).Result;
+                }
+                catch (Exception e)
+                {
+                    MessageDialog guestNotCreated = new MessageDialog("Guest Blev ikke opdateret" + e);
+                }
             }
         }
     }

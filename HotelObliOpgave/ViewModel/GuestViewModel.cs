@@ -89,7 +89,7 @@ namespace HotelObliOpgave.ViewModel
 
             CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest, null);
             DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
-            //UpdateGuestCommand = new RelayCommand(UpdateGuest, CanUpdateGuest);
+            UpdateGuestCommand = new RelayCommand(GuestHandler.UpdateGuestHandler);
             GetGuestCommand = new RelayCommand(GuestHandler.GetGuest, null);
         }
 
